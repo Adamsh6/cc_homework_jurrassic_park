@@ -58,4 +58,30 @@ describe('Park', function() {
     assert.deepStrictEqual(actual, [velociraptor])
   });
 
+  it('should give a record of how many dinosaurs there are of each diet type', function(){
+    park.addDinosaur(tRex2);
+    park.addDinosaur(triceratops);
+    const actual = park.dietTable();
+    const expected = {'carnivore': 3, 'herbivore': 1}
+    assert.deepStrictEqual(actual, expected)
+  })
+
+  describe('Tickets', function(){
+    it('should calculate the total number of visitors per day', function(){
+      const actual = park.totalVisitorsPerDay();
+      assert.strictEqual(actual, 180);
+    });
+
+    it('should calculate the total number of visitors per year', function(){
+      const actual = park.totalVisitorsPerYear();
+      assert.strictEqual(actual, 65700);
+    });
+
+    it('should calculate the total revenue from ticket sales for one year', function(){
+      const actual = park.yearlyRevenue();
+      assert.strictEqual(actual, 1971000)
+    })
+
+  })
+
 });
